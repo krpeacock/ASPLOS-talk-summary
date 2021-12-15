@@ -1,0 +1,4 @@
+{
+    "html.autoClosingTags": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performant and Secure Applications on the Internet Computer</title>
+    <link rel="stylesheet" href="./whitepaper.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Performant and Secure Applications on the Internet Computer</h1>
+
+        <p>
+          In May 2021 the Internet Computer, a web-speed smart contract and app
+          platform, went live. After less than 6 months, the internet computer
+          hosts more than 12'000 smart contract apps and serves more than
+          100’000 users, providing a plethora of services, ranging from social
+          media and chat applications to DeFi and NFTs. Thanks to its
+          architecture and support for new service and business models, the
+          internet computer has the potential to change how we develop, host and
+          use apps.
+        </p>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/rMuCZuPllEE?modestbranding=1&"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <p>
+          In this tutorial we host sessions on developing apps that offer
+          enhanced security on this decentralized platform, how such smart
+          contracts are executed securely in a sandboxed environmentand how
+          trust can be increased further with reproducible builds.
+        </p>
+      </section>
+      <section>
+        <h2 id="kyle-peacock">
+          Trustless Web Applications on the Internet Computer (1h)
+        </h2>
+        <strong>Speaker: Kyle Peacock</strong>
+
+        <p>
+          <strong>Summary:</strong> This tutorial will show how the DFINITY
+          Foundation’s research can be practically applied to power a fully
+          decentralized application development stack, colloquially known as Web
+          3.0. Come learn how you can write an app thats offers enhanced
+          security on a decentralized and trustless network, while maintaining
+          performant reads and writes for users
+        </p>
+
+        <p>This demonstration will cover:</p>
+        <ul>
+          <li>Serving web content on a Certified Asset smart contract</li>
+          <li>
+            Anonymous authentication without usernames or passwords, using
+            Internet Identity
+          </li>
+          <li>Access control strategies for anonymous users</li>
+        </ul>
+
+        <p>
+          <strong>Bio:</strong> Kyle has taken on the role of team lead for the
+          SDK team, within a year of joining DFINITY as a frontend engineer.
+          Kyle takes pride in his ability to break down complex topics and to
+          explain them in an intuitive and conversational manner. His passion is
+          for user-centered application design, particularly when it comes to
+          accessibility.
+        </p>
+      </section>
+      <section>
+        <h2 id="helge-bahmann">Smart contract sandboxing (2h)</h2>
+        Speaker: Helge Bahmann
+
+        <p>
+          <strong>Summary:</strong> Smart contract code execution is confined by
+          the WebAssembly runtime. The constraints of the runtime are enforced
+          by a) limiting access through the system API and b) correctness of the
+          JIT-compiled native code derived from the WebAssembly code. The full
+          implementation correctness cannot necessarily be fully assumed due to
+          the complexity of the components. Additionally, even with a perfectly
+          correctly operating JIT compiler, the generated native code executes
+          in the context of its host process. This makes it indistinguishable
+          from all other code executing in the same process to the CPU. As a
+          consequence, the CPU fundamentally cannot be stopped from performing
+          speculative access to any memory reachable to the host process. This
+          can be abused by completely legitimate WebAssembly code to trigger
+          such speculative access. Timing measurements against code execution
+          paths may then reveal secrets.
+        </p>
+
+        <p>The tutorial will cover the following topics:</p>
+        <ul>
+          <li>
+            <strong>IC and WebAssembly</strong> How the IC executes canisters
+            and Wasm, how it manages state, memory access tracking and cycles
+            accounting.
+          </li>
+          <li>
+            <strong>WebAssembly security model</strong>: A detailed look at the
+            Wasm security model and how access restrictions are enforced on the
+            natively compiled code. Conditions for maintaining the security
+            model are discussed, as are some breaches that allow bypassing it.
+          </li>
+          <li>
+            <strong>Side channel attacks and threat model:</strong> How side
+            channel attacks can be mounted through Wasm code and what data could
+            be accessed, conditions for a successful attack. The IC needs to
+            protect against malicious Wasm code, this will discuss what an
+            attacker could (want to) accomplish and how to counter these
+            threads.
+          </li>
+          <li>
+            <strong>Process separation:</strong> Changing an existing in-process
+            execution design to allow out-of-process execution is a major
+            software engineering feat, and hence encountered in many projects.
+            This will look at issues encountered, how to design for sandboxing &
+            strategies for transition and how to organize IPC, how safe sharing
+            of bulk data via shared memory can be accomplished and possible
+            pitfalls that may violate trust assumptions.
+          </li>
+          <li>
+            <strong>Enforcing process isolation:</strong> How to ensure that the
+            different processes cannot interfere with each other. This discusses
+            different techniques available for sandboxing processes, from system
+            call filtering to mandatory access control.
+          </li>
+          <li>
+            <strong>Hardening:</strong> To defeat real-world attacks it helps to
+            make an attacker's life difficult with various mechanisms: Enforcing
+            W^X and design implications of separate compilation, controlled
+            process lifecycles and denial of communication channels.
+          </li>
+          <li>
+            <strong>Performance considerations:</strong> Sandboxing may affect
+            performance but this can be minimized through careful design. Design
+            constraints in optimizing for performance will be discussed, how to
+            bring performance to parity with in-process execution or even
+            surpass it.
+          </li>
+        </ul>
+
+        <p>
+          <strong>Bio:</strong> Helge is a researcher at DFINITY foundation and
+          focuses on operating systems and system security measures. Other
+          interests include compilers, functional intermediate representations,
+          CPU architectures and formal methods in software construction. He
+          holds a PhD in computer science and has previously worked at Secunet
+          and Google. In the past 20 years he has been working on and off on
+          various parts of the Linux OS environment.
+        </p>
+      </section>
+      <section>
+        <h2 id="ognjen-maric">
+          Reproducible Builds or “What Code is this Smart Contract Running?”
+          (1h)
+        </h2>
+        Speaker: Ognjen Maric
+
+        <p>
+          <strong>Summary:</strong> Computer programs are usually written in a
+          high-level language, but then compiled to a lower-level language in
+          order to be executed. Software auditors generally look at the
+          high-level source code. This leaves a gap: there is generally no
+          guarantee that the deployed (compiled) artifact is really the result
+          of compiling the audited source code, and thus no guarantee that the
+          audit results apply to the deployed artifact. Reproducible builds fill
+          this gap: they allow any third party with access to the source code to
+          verify that a provided artifact really results from compiling the
+          source. Reproducible builds are especially important in the context of
+          decentralized finance, where users transfer the control of their
+          digital assets to a smart contract, and have to trust that the smart
+          contract will operate according to the claims made by its authors and
+          auditors.
+        </p>
+        <p>
+          In this tutorial, we will examine the landscape of reproducible build
+          tools for the official supported languages on the Internet Computer:
+          Motoko, Rust, and Javascript. We will also cover other, more general
+          tools useful for reproducible builds, such as Docker and Nix.
+        </p>
+        <p>
+          <strong>Bio:</strong> Ognjen is a researcher at DFINITY foundation,
+          focusing on formal methods and security. His other areas of interest
+          include distributed systems and programming languages. He holds a PhD
+          in formal methods from ETH Zurich, and has previously worked at
+          Digital Asset, designing, verifying and implementing security
+          protocols.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <div>
+          <p>Links to further material:</p>
+          <ul class="unstyled">
+            <li>
+              Infographic: <a href="https://dfinity.org/icig.pdf">here</a>
+            </li>
+            <li>
+              Technical Library:
+              <a
+                href="https://www.youtube.com/playlist?list=PLuhDt1vhGcrfHG_rnRKsqZO1jL_Pd970h"
+                >here</a
+              >
+              (videos of talks) and
+              <a
+                href="https://medium.com/dfinity/https-medium-com-dfinity-technology/home"
+                >here</a
+              >
+              (blogposts)
+            </li>
+            <li>
+              Mainnet Dashboard:
+              <a href="https://dashboard.internetcomputer.org/">here</a>
+            </li>
+            <li>
+              200,000,000 CHF Developer Grant Program here DFINITY SDK:
+              <a
+                href="https://smartcontracts.org/docs/introduction/welcome.html"
+                >here</a
+              >
+            </li>
+          </ul>
+
+          <p class="css-9e9owo"><span>©</span> 2021</p>
+          <a href="/" class="css-wes3ci e1ju6a3z4"
+            ><img
+              class="css-1hym9t5"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAAASCAYAAADR06UUAAAEW0lEQVR4Xu1Z7XHUMBANHUAH0AFUQKgAqIBQQUIFUAFHuPO3zPEnv0MFCRUkHeQ6gArwoSdL9npvJduXI3M3+M3s5OLV6mP1vLuSj44mTDhEJEnyNEmKY8hsuXzM9UOwiz4mTDgCeZKi/BhlaqVlTSXJ1XKmicZtJERJfhLn6pr3gWdxpt7x9hMmeDGL8ucSIbmAuNzWAcSVCMnFkHyKoBP6AEItMvWbE8gncVbONvoYSOxGcnV7X3JGekw+b/y/bWROMpMtNudqBSUJt/FhvV4/0jaXWqo0/faa632AnV7Drba7kzLUeVS+smu+4boQ4rh4D7tFrq64zofzvHzL/StItciKM25LkSTqRd22uJN8OC+KZ1HNnaqjsA87A8apup6n6jROiu9cZ4QQC6SUFmD6SIpPEHEMgeBjgJKB98lkJW2uD961WhlLMIwPO6yf632wdm7MG/7ygmBW193EHtg9WIMcXOcDiMl9IEnf+uKLiydRu/+dFwrrnbd+b9ckbO4KkYjYmkOMlKIXeWnqTk5KE7Uy9Yb2AbTOaYU7fgzo3Jtn5iUpzsicVkPHcMREqcF1Y7EjYq6TTH2m+ockJrDEuUPvcVFHNWSA9SJVV/XBthZuIyHSkd7Nm0bYNpoyPznnNY4IDCQRS5BVqI8oVV9o+zGbxiERs9HVpcWoMfaRmFoq+pI/NDEdMC/nHxCT6/tg1tXu/S8ENOqjzrwQSagTFmnxg/QlooecQVICGJNGWERi3mYoQsQESGpecZ2EPSSm3bR6I6E/VGICNKWbDFyUjktVhzd6ssfECYMdSGqCRkC2PlI62OK+cT7XD0UfMal+SDqnRDYHKCpCaRLCDohpUh7xlanNDpmYAEnpft5xYvadrhzsXWenc2Ovhp2EWb36z4g502Ry+iEvTejwMzaK7oKYUVKeoLZzGQaHxUMnJkvp8nywWdT5Q9LqPFen1IaLdB1AgZTUGTPtH9OHPmIu4vIspOdwjtd/f5q+ieAQwNuHsCti4pn+/aHxr35BnJ6ZBrEvxARsSjdr8PLFOa+RvHsip5BIyU/kEe7KApFzI9rqt4e3GYoQMW39bNY2lPx7VmM2xMQzoXw6WGLSNXqJ2U64kY27P2wy0ghrZ+4ybdQ1G0AFBOR13QYp0W5AivXBR0wzX1IueBfPsK/EBNhdoNETs14cHDFpZGFyaRajI5oQFQ0pXXrzkRPPcEmPPqR70PtES4ASE2QyaU7Pi853DCn2mZgAvfODnur6cHDEBKRPeyFBauQ1V4CcsmgCUfttIHwcaMRe8ntLCgn7Qky7F+KnzKiuNystf7guBFtvw27Up0wHQsxqR8TEXKo4zl9yfQeDiRWIcugjdLIlcsmJvQ0Q7c3Jmx1U+JeroTA+0Pb3KS8oUK9vc3DCbUkcZ+98dljz174NZTDlje5zrB2F2V/dx7b+pcAa0Bd/LsJcftdvVoegJvrU372PuY0EbAbac0KO6WPC/4m/ZYrUlkMi24sAAAAASUVORK5CYII="
+              alt="site_logo"
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
